@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="src/css/layui.css" media="all">
+</head>
+
+<body>
+    <div id="view">
+        <h3>{{ d.title }}</h3>
+        <ul>
+            {{# layui.each(d.list, function(index, item){ }}
+            <li>
+                <span>{{ item.modname }}</span>
+                <span>{{ item.alias }}：</span>
+                <span>{{ item.site || '' }}</span>
+            </li>
+            {{# }); }}
+            {{# if(d.list.length === 0){ }}
+            无数据
+            {{# } }}
+        </ul>
+    </div>
+    <script id="demo" type="text/html">
+    </script>
+    <script src="src/layui.js"></script>
+    <script type="text/javascript">
+    layui.use(['laytpl', 'jquery'], function() {
+        var laytpl = layui.laytpl,
+            $ = layui.jquery;
+        var data = { //数据
+            "title": "Layui常用模块",
+            "list": [{ "modname": "弹层", "alias": "layer", "site": "layer.layui.com" }, { "modname": "表单", "alias": "form" }]
+        };
+        var template = $("#view").html();
+        laytpl(template).render(data, function(html) {
+        	$("#view").html(html);
+        });
+        // var getTpl = document.getElementById('view').innerHTML,
+// view = document.getElementById('view');
+// laytpl(getTpl).render(data, function(html) {
+// view.innerHTML = html;
+// });
+    });
+    </script>
+    <!-- <script src="js/alert.js" ></script>
+ -->
+    <!-- <script type="text/javascript">
+
+	layui.use(['layer', 'alert'], function() {
+		//layer.msg("测试");
+		//alert("测试");
+		//var layer = layui.layer;
+		//var alert = layer.alert("测试");
+		//layer.alert("test");
+		//layer.msg('Hello World');
+		var alert = layui.alert;
+
+		alert("测试");
+	});
+	var d = {name: 'Alex', age: 21};
+</script> -->
+</body>
+
+</html>
